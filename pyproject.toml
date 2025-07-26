@@ -12,14 +12,12 @@ pandas = "^2.2"
 numpy = "^1.26"
 scikit-learn = "^1.4"
 
-[tool.poetry.dev-dependencies]
-pytest = "^8.0"
-black = "^24.0"
-mypy = "^1.9"
-isort = "^5.13"
+
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.2.0"
+black = "^24.10.0"
+pytest = "^8.4.1"
 
 [build-system]
 requires = ["poetry-core"]
