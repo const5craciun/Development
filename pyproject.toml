@@ -5,6 +5,7 @@ description = "Short description of your project"
 authors = ["Constantin-Bogdan Craciun <bbogdan.craciun@email.com>"]
 license = "nope"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
