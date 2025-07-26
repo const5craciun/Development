@@ -37,6 +37,15 @@ jobs:
           name: Run tests
           command: |
             poetry run pytest tests/
+      - run:
+          name: Run pre-commit hooks
+          command: |
+            # Install pre-commit in Poetry environment
+            poetry add --dev pre-commit
+            
+            # Run pre-commit against all files (like git would)
+            poetry run pre-commit run --all-files
+
 
 workflows:
   version: 2
