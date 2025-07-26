@@ -9,6 +9,7 @@
     "terminal.integrated.defaultProfile.linux": "bash"
   },
   "postCreateCommand": "poetry install",
+  "postCreateCommand": "pre-commit install && poetry install",
   "customizations": {
     "vscode": {
       "extensions": [

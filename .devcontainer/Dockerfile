@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-RUN apt-get update && apt-get install -y curl build-essential && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl build-essential git && rm -rf /var/lib/apt/lists/*
 
 # Install poetry
 ENV POETRY_VERSION=1.8.2
