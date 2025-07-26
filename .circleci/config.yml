@@ -25,7 +25,7 @@ jobs:
           name: Install dependencies
           command: |
             source $BASH_ENV
-            poetry config virtualenvs.create false
+            poetry config virtualenvs.create true
             poetry install --no-interaction
 
       - save_cache:
@@ -39,7 +39,8 @@ jobs:
           name: Run pre-commit hooks
           command: |
             source $BASH_ENV
-            poetry run pre-commit run --all-files
+            poetry run pre-commit install-hooks
+            poetry run pre-commit run --all-files --show-diff-on-failure --color always
 
       - run:
           name: Run tests
