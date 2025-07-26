@@ -24,28 +24,28 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            source $BASH_ENV
+            poetry config virtualenvs.create false
             poetry install --no-interaction
 
       - save_cache:
           paths:
             - ~/.cache/pypoetry
             - ~/.cache/pip
-            - ~/.cache/virtualenvs  # caching poetry venvs speeds up installs
+            - ~/.cache/virtualenvs
           key: poetry-cache-{{ checksum "poetry.lock" }}
+
+      - run:
+          name: Run pre-commit hooks
+          command: |
+            source $BASH_ENV
+            poetry run pre-commit run --all-files
 
       - run:
           name: Run tests
           command: |
+            source $BASH_ENV
             poetry run pytest tests/
-      - run:
-          name: Run pre-commit hooks
-          command: |
-            # Install pre-commit in Poetry environment
-      
-            
-            # Run pre-commit against all files (like git would)
-            poetry run pre-commit run --all-files
-
 
 workflows:
   version: 2
