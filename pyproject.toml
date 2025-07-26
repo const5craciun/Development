@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "Development"
+version = "0.1.0"
+description = "Short description of your project"
+authors = ["Constantin-Bogdan Craciun <bbogdan.craciun@email.com>"]
+license = "nope"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2"
+numpy = "^1.26"
+scikit-learn = "^1.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0"
+black = "^24.0"
+mypy = "^1.9"
+isort = "^5.13"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,45 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.10
+    working_directory: ~/project
+
+    steps:
+      - checkout
+
+      # Cache poetry packages to speed up builds
+      - restore_cache:
+          keys:
+            - poetry-cache-{{ checksum "poetry.lock" }}
+            - poetry-cache-
+
+      - run:
+          name: Install Poetry
+          command: |
+            curl -sSL https://install.python-poetry.org | python3 -
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+
+      - run:
+          name: Install dependencies
+          command: |
+            poetry config virtualenvs.create false
+            poetry install --only main --no-interaction
+
+      - save_cache:
+          paths:
+            - ~/.cache/pypoetry
+            - ~/.cache/pip
+          key: poetry-cache-{{ checksum "poetry.lock" }}
+
+      - run:
+          name: Run tests
+          command: poetry run pytest tests/
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - test

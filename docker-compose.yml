@@ -1,0 +1,11 @@
+version: '3.8'
+services: 
+  development:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    ports: 
+      - "1234:1234"
+    volumes:
+      - .:/workspace
+    command: jupyter lab --ip=0.0.0.0 --port=1234 --no-browser --allow-root
