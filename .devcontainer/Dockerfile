@@ -13,8 +13,8 @@ WORKDIR /workspace
 COPY pyproject.toml poetry.lock ./
 
 # Install dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-root --only main
+RUN poetry config virtualenvs.create true \
+    && poetry install --no-root --with dev
 
 # Copy the rest of your source code
 COPY . .
