@@ -4,7 +4,9 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "forwardPorts": [1234],
+  "forwardPorts": [
+    1234
+  ],
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   },
