@@ -4,14 +4,11 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "forwardPorts": [
-    1234
-  ],
+  "forwardPorts": [1234],
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "poetry install",
-  "postCreateCommand": "pre-commit install && poetry install",
+  "postCreateCommand": "poetry install --with dev && poetry run pre-commit install",
   "customizations": {
     "vscode": {
       "extensions": [

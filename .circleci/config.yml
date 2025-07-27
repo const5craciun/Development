@@ -45,11 +45,11 @@ jobs:
             cat .pre-commit-config.yaml
 
       - run:
-          name: Run pre-commit hooks verbosely
+          name: Run pre-commit hooks and check for diffs
           command: |
             source $BASH_ENV
-            poetry run pre-commit install-hooks
-            poetry run pre-commit run --all-files --show-diff-on-failure --color always -v
+            poetry run pre-commit run --all-files --show-diff-on-failure --color always
+            git diff --exit-code
 
       - run:
           name: Run tests
