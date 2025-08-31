@@ -6,23 +6,21 @@ RUN apt-get update && apt-get install -y curl build-essential git && rm -rf /var
 ENV POETRY_VERSION=1.8.2
 RUN pip install "poetry==${POETRY_VERSION}"
 
-# Set working directory
 WORKDIR /workspace
 
-# Copy pyproject.toml and poetry.lock from project root (context root)
+# Copy dependency files first
 COPY pyproject.toml poetry.lock ./
 
-# Install dependencies
-RUN poetry config virtualenvs.create true \
+# Disable virtualenv creation and install dependencies globally
+RUN poetry config virtualenvs.create false \
     && poetry install --no-root --with dev
 
-COPY .git .git 
 
-# Copy the rest of your source code
+# Copy source code and .git folder
+COPY .git .git
 COPY . .
 
-RUN poetry run pre-commit install
+# Install pre-commit hooks now that .git exists
+RUN pre-commit install
 
-
-
-CMD [ "/bin/bash" ]
+CMD ["/bin/bash"]

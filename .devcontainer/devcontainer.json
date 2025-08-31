@@ -8,7 +8,8 @@
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "poetry install --with dev && poetry run pre-commit install",
+"postCreateCommand": "poetry install --with dev && poetry run pre-commit install",
+
   "customizations": {
     "vscode": {
       "extensions": [
