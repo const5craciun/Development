@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  workbench:
+    build:
+      context: ..
+      dockerfile: workbench/Dockerfile
+    ports:
+    - "5555:5555"
+    volumes:
+      - ../:/workbench
+    tty: true
+    stdin_open: true
