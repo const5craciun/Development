@@ -1,10 +1,10 @@
 version: '3.8'
-services: 
+services:
   development:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
-    ports: 
+    ports:
       - "1234:1234"
     volumes:
       - .:/workspace
