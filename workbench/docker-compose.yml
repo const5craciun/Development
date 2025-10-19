@@ -9,5 +9,9 @@ services:
     - "5555:5555"
     volumes:
       - ../:/workbench
+      - /Users/konst/documents/data_library:/workbench/data_library
+
+    env_file:
+      - .env
     tty: true
     stdin_open: true
