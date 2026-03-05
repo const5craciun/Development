@@ -5,4 +5,4 @@ def check1():
     return 5
 
 
-print(1)
+print(2)
